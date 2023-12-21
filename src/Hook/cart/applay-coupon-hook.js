@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import 'react-toastify/dist/ReactToastify.css';
 import notify from '../../Hook/useNotifaction'
 import { applayCoupnCart } from '../../Redux/actions/cartAction';
-const ApplayCouponHook = () => {
+import {useNavigate} from 'react-router-dom'
+const ApplayCouponHook = (cartItems) => {
     const dispatch = useDispatch();
 
-   
+
     const [couponName, setCouponName] = useState('')
     const [loading, setLoading] = useState(true)
 
@@ -22,7 +23,7 @@ const ApplayCouponHook = () => {
         }
         setLoading(true)
         await dispatch(applayCoupnCart({
-            coupon: couponName
+            couponName: couponName
         }))
         setLoading(false)
     }
@@ -32,7 +33,8 @@ const ApplayCouponHook = () => {
     useEffect(() => {
 
         if (loading === false) {
-            if (res && res.status === "success") {
+            console.log(res)
+            if (res && res.status === 200) {
                 notify("تم تطبيق الكوبون بنجاح", "success")
                 setTimeout(() => {
                     window.location.reload(false)
@@ -47,8 +49,17 @@ const ApplayCouponHook = () => {
         }
     }, [loading])
 
+    const navigate = useNavigate()
+    const handelCheckout = () => {
+        if (cartItems.length >= 1) {
+            navigate('/order/paymethoud')
+        }
+        else {
+            notify("من فضلك اضف منتجات للعربة اولا", "warn")
+        }
+    }
 
-    return [couponName, onChangeCoupon, handelSubmitCoupon]
+    return [couponName, onChangeCoupon, handelSubmitCoupon,handelCheckout]
 
 }
 

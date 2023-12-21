@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import  DeleteCartHook  from '../../Hook/cart/delete-cart-hook';
 import  ApplayCouponHook  from '../../Hook/cart/applay-coupon-hook';
-export default function CartCheckOut({ totalCartPrice, totalCartPriceAfterDiscount, couponNameRes }) {
+export default function CartCheckOut({ totalCartPrice, totalCartPriceAfterDiscount, couponNameRes,cartItems }) {
   
     const [handelDeleteCart] = DeleteCartHook()
 
-    const [couponName, onChangeCoupon, handelSubmitCoupon] = ApplayCouponHook();
+    const [couponName, onChangeCoupon, handelSubmitCoupon,handelCheckout] = ApplayCouponHook(cartItems);
 
     useEffect(() => {
         if (couponNameRes) {
@@ -31,17 +30,13 @@ export default function CartCheckOut({ totalCartPrice, totalCartPriceAfterDiscou
                 <div className="product-price d-inline w-100 my-3  border">
                     {
                         totalCartPriceAfterDiscount >= 1 ?
-                            ` ${totalCartPriceAfterDiscount}  جنيه بعد الخصم ` :
+                            `${totalCartPrice} جنيه ... بعد الخصم ${totalCartPriceAfterDiscount} ` :
                             `${totalCartPrice} جنيه`
                     }
                 </div>
-                <Link
-                    to="/order/paymethoud"
-                    style={{ textDecoration: "none" }}
-                    className="product-cart-add  d-inline ">
 
-                    <button className="product-cart-add w-100 px-2"> اتمام الشراء</button>
-                </Link>
+                <button className="product-cart-add  d-inline " onClick={handelCheckout}> اتمام الشراء</button>
+
                 <button onClick={handelDeleteCart} className="product-cart-add w-100 px-2 my-1"> مسح العربة</button>
             </Col>
             <ToastContainer />

@@ -2,27 +2,44 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import UserAllOrderCard from './UserAllOrderCard'
 
-export default function UserAllOrderItem() {
-  return (
-    <div className="user-order mt-2">
+export default function UserAllOrderItem({ orderItem,number }) {
+    const formatDate = (dateString) => {
+        const options = { year: "numeric", month: "numeric", day: "numeric" }
+        return new Date(dateString).toLocaleDateString(undefined, options)
+    }
+    return (
+        <div className="user-order mt-2 mb-2">
             <Row>
-                <div className="py-2 order-title">طلب رقم #234556</div>
+                <div className="py-2 order-title">طلب رقم #{number || 0} ...تم بتاريخ {formatDate(orderItem.createdAt)}</div>
             </Row>
-            <UserAllOrderCard />
-            <UserAllOrderCard />
+            {
+                orderItem.cartItems ? (orderItem.cartItems.map((item, index) => {
+                    return <UserAllOrderCard key={index} item={item} />
+                })) : null
+            }
+
             <Row className="d-flex justify-content-between">
-                <Col xs="6" className="">
-                    <div>
-                        <div className="d-inline">الحالة</div>
-                        <div className="d-inline mx-2 stat">قيد التنفيذ</div>
+                <Col md="6" className="d-flex">
+                    <div style={{marginRight:"20px"}}>
+                        <div className="d-inline"> التوصيل </div>
+                        <div className="d-inline mx-2 stat">{orderItem.isDelivered === true ? 'تم التوصيل' : 'لم يتم '}</div>
+                    </div>
+                    <div style={{marginRight:"20px"}}>
+                        <div className="d-inline"> الدفع </div>
+                        <div className="d-inline mx-2 stat">{orderItem.isPaid === true ? 'تم الدفع' : 'لم يتم '}</div>
+                    </div>
+
+                    <div style={{marginRight:"20px"}}>
+                        <div className="d-inline">طريقة الدفع </div>
+                        <div className="d-inline mx-2 stat">{orderItem.paymentMethodType === 'cash' ? 'كاش' : 'بطاقة ائتمانية'}</div>
                     </div>
                 </Col>
                 <Col xs="6" className="d-flex justify-content-end">
                     <div>
-                        <div className="barnd-text">4000 جنيه</div>
+                        <div className="barnd-text">{orderItem.totalOrderPrice || 0} جنية</div>
                     </div>
                 </Col>
             </Row>
         </div>
-  )
+    )
 }

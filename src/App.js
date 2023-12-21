@@ -48,7 +48,6 @@ export default function App() {
               <Route path='/products' element={<ShopProductPage/>}/>
               <Route path='/products/:id' element={<ProductDetailsPage/>}/>
               <Route path='/cart' element={<CartPage/>}/>
-              <Route path='/order/paymethod' element={<ChoosePayMethodPage/>}/>
               <Route path='/user/forget-password' element={<ForgetPasswordPage/>}/>
               <Route path='/user/verify-code' element={<VerifyPasswordPage/>}/>
               <Route path='/user/reset-password' element={<ResetPasswordPage/>}/>
@@ -73,6 +72,7 @@ export default function App() {
               <Route path='/user/add-address' element={<UserAddAddressPage/>}/>
               <Route path='/user/edit-address/:id' element={<UserEditAddressPage/>}/>
               <Route path='/user/profile' element={<UserProfilePage/>}/>
+              <Route path='/order/paymethoud' element={<ChoosePayMethodPage/>}/>
           </Route>
 
           </Routes>

@@ -6,7 +6,6 @@ import deleteicon from '../../images/delete.png'
 import DeleteCartHook from '../../Hook/cart/delete-cart-hook'
 export default function CartItem({item}) {
   const [handelDeleteCart, show, handleClose, handleShow, handelDeleteItem, itemCount, onChangeCount, handeleUpdateCart] = DeleteCartHook(item)
-  console.log(item)
   return (
     <Col xs="12" className="cart-item-body my-2 d-flex px-2">
 
@@ -25,11 +24,11 @@ export default function CartItem({item}) {
         </Modal.Footer>
       </Modal>
 
-      <img width="160px" height="197px" src={item.product.imageCover || mobile} alt="" />
+      <img width="160px" height="197px" src={item.product.imageCover || mobile} alt="" style={{marginLeft: "10px"}}/>
       <div className="w-100">
         <Row className="justify-content-between">
           <Col sm="12" className=" d-flex flex-row justify-content-between">
-            <div className="d-inline pt-2 cat-text">{item.product.category.name || ""}</div>
+            <div className="d-inline pt-2 cat-text">{item.product.category?item.product.category.name:"no category"}</div>
             <div onClick={handleShow} className="d-flex pt-2 " style={{ cursor: "pointer" }}>
               <img src={deleteicon} alt="" width="20px" height="24px" />
               <div className="cat-text d-inline me-2">ازاله</div>
@@ -48,7 +47,7 @@ export default function CartItem({item}) {
         <Row>
           <Col sm="12" className="mt-1">
             <div className="cat-text d-inline">الماركة :</div>
-            <div className="barnd-text d-inline mx-1">{item.product.brand.name || ""} </div>
+            <div className="barnd-text d-inline mx-1">{item.product.brand?item.product.brand.name:"no brand"} </div>
           </Col>
         </Row>
         <Row>

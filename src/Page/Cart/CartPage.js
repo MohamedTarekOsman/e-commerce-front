@@ -23,7 +23,7 @@ export default function CartPage() {
     </Col>
 
             <Col xs="6" md="3">
-                <CartCheckOut couponNameRes={couponNameRes} totalCartPriceAfterDiscount={totalCartPriceAfterDiscount} totalCartPrice={totalCartPrice} />
+                <CartCheckOut cartItems={cartItems} couponNameRes={couponNameRes} totalCartPriceAfterDiscount={totalCartPriceAfterDiscount} totalCartPrice={totalCartPrice} />
             </Col>
         </Row>
     </Container >
