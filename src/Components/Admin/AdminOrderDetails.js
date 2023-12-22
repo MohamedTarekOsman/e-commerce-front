@@ -1,16 +1,25 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import CartItem from '../Cart/CartItem'
 import { Col, Row } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+import UserAllOrderItem from '../User/UserAllOrderItem'
+import { ToastContainer } from 'react-toastify'
+import GetOrderDetalisHook from '../../Hook/admin/get-order-detalis-hook'
+import ChangeOrderStatusHook from '../../Hook/admin/change-order-status-hook'
 
 export default function AdminOrderDetails() {
-  return (
-    <div>
-        <div className='admin-content-text'>تفاصيل الطلب رقم #5</div>
-        <CartItem/>
-        <CartItem/>
-        <CartItem/>
-        <CartItem/>
-        <Row className="justify-content-center mt-4 user-data">
+    const { id } = useParams()
+    const [orderData, cartItems] = GetOrderDetalisHook(id)
+
+    const [formatDate, onChangePaid, changePayOrder, onChangeDeliver, changeDeliverOrder] = ChangeOrderStatusHook(id)
+
+    return (
+        <div>
+
+            <UserAllOrderItem orderItem={orderData} />
+
+            <Row className="justify-content-center mt-4 user-data">
                 <Col xs="12" className=" d-flex">
                     <div className="admin-content-text py-2">تفاصيل العميل</div>
                 </Col>
@@ -31,7 +40,7 @@ export default function AdminOrderDetails() {
                             fontSize: "16px",
                         }}
                         className="mx-2">
-                        محمد طارق عثمان
+                        {orderData ? orderData.user ? orderData.user.name : '' : ''}
                     </div>
                 </Col>
 
@@ -52,7 +61,7 @@ export default function AdminOrderDetails() {
                             fontSize: "16px",
                         }}
                         className="mx-2">
-                        201148988342+
+                        {orderData ? orderData.user ? orderData.user.phone : '' : ''}
                     </div>
                 </Col>
                 <Col xs="12" className="d-flex">
@@ -72,25 +81,37 @@ export default function AdminOrderDetails() {
                             fontSize: "16px",
                         }}
                         className="mx-2">
-                        mohamed@gmail.com
+                        {orderData ? orderData.user ? orderData.user.email : '' : ''}
                     </div>
                 </Col>
-                <div className=" d-inline px-4 border text-center pt-2">
-                    المجموع ٤٠٠٠ جنيه
-                </div>
                 <div className="d-flex mt-2 justify-content-center">
-                    <select
-                        name="languages"
-                        id="lang"
-                        className="select input-form-area mt-1  text-center px-2 w-50">
-                        <option value="val">حالة الطلب</option>
-                        <option value="val2">قيد التنفيذ</option>
-                        <option value="val2">تم الانتهاء</option>
-                        <option value="val2">الغاء</option>
-                    </select>
-                    <button className="btn-a px-3 d-inline mx-2 ">حفظ </button>
+                    <div>
+                        <select
+                            name="pay"
+                            id="paid"
+                            onChange={onChangePaid}
+                            className="select input-form-area mt-1  text-center w-50">
+                            <option value="0">الدفع</option>
+                            <option value="true">تم</option>
+                            <option value="false">لم يتم</option>
+                        </select>
+                        <button onClick={changePayOrder} className="btn-a px-2 d-inline mx-1 ">حفظ </button>
+                    </div>
+                    <div>
+                        <select
+                            onChange={onChangeDeliver}
+                            name="deliver"
+                            id="deliver"
+                            className="select input-form-area mt-1  text-center  w-50">
+                            <option value="0">التوصيل</option>
+                            <option value="true">تم</option>
+                            <option value="false">لم يتم</option>
+                        </select>
+                        <button onClick={changeDeliverOrder} className="btn-a px-2 d-inline mx-1 ">حفظ </button>
+                    </div>
                 </div>
             </Row>
-    </div>
-  )
+            <ToastContainer />
+        </div>
+    )
 }

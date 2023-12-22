@@ -2,7 +2,6 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 export default function UserAllOrderCard({item}) {
-    console.log(item)
     return (
         <div>
             <Row className="d-flex mb-2">
