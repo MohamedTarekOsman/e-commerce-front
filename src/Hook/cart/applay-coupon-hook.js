@@ -23,7 +23,7 @@ const ApplayCouponHook = (cartItems) => {
         }
         setLoading(true)
         await dispatch(applayCoupnCart({
-            couponName: couponName
+            coupon: couponName
         }))
         setLoading(false)
     }
@@ -33,8 +33,7 @@ const ApplayCouponHook = (cartItems) => {
     useEffect(() => {
 
         if (loading === false) {
-            console.log(res)
-            if (res && res.status === 200) {
+            if (res && res.status === "success") {
                 notify("تم تطبيق الكوبون بنجاح", "success")
                 setTimeout(() => {
                     window.location.reload(false)
