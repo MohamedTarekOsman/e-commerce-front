@@ -17,7 +17,7 @@ const HomeCategory=()=>{
           {
             loading===false?(
               category.data?(
-                category.data.slice(0,5).map((item,index)=>(<CategoryCard key={index} title={item.name} img={item.image} background={colors[index]}/>))
+                category.data.slice(0,5).map((item,index)=>(<CategoryCard key={index} id={item._id} title={item.name} img={item.image} background={colors[index]}/>))
               ):<h4>لا توجد تصنيفات</h4>
             ):<Spinner animation='border' variant='primary' className='m-auto'/>
           }

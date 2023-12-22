@@ -33,6 +33,8 @@ import AdminAddCouponPage from './Page/Admin/AdminAddCouponPage'
 import AdminEditCouponPage from './Page/Admin/AdminEditCouponPage'
 import ProtectedRouteHook from './Hook/auth/protected-route-hook'
 import ProtectedRoute from './Components/Utility/ProtectedRoute'
+import ProductsByCategory from './Page/Products/ProductsByCategory'
+import ProductsByBrand from './Page/Products/ProductsByBrand'
 export default function App() {
   const [isUser, isAdmin, userData] = ProtectedRouteHook()
   return (
@@ -51,6 +53,8 @@ export default function App() {
               <Route path='/user/forget-password' element={<ForgetPasswordPage/>}/>
               <Route path='/user/verify-code' element={<VerifyPasswordPage/>}/>
               <Route path='/user/reset-password' element={<ResetPasswordPage/>}/>
+              <Route path="/products/category/:id" element={<ProductsByCategory />} />
+            <Route path="/products/brand/:id" element={<ProductsByBrand />} />
 
           <Route element={<ProtectedRoute auth={isAdmin}/>}>
               <Route path='/admin/allproducts' element={<AdminAllProductsPage/>}/>

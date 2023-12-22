@@ -18,7 +18,7 @@ export default function CategoryContainer({data,loading}) {
             {
             loading===false?(
               data?(
-                data.map((item,index)=>(<CategoryCard key={index} title={item.name} img={item.image} background={colors[Math.floor(Math.random()*5)]}/>))
+                data.map((item,index)=>(<CategoryCard id={item._id} key={index} title={item.name} img={item.image} background={colors[Math.floor(Math.random()*5)]}/>))
               ):<h4 className='m-auto' >لا توجد تصنيفات</h4>
             ):<Spinner animation='border' variant='primary' className='m-auto'/>
           }
