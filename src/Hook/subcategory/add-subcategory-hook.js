@@ -56,6 +56,9 @@ export default function AddSubCategoryhook() {
                 setName("")
                 if(subcategory.data){
                     notify("تمت اضافة البيانات","success")
+                    setTimeout(()=>{
+                        window.location.reload(false)
+                    },1500)
                 }else{
                     notify("هذا التصنيف موجود بالفعل","error")
                     setFlag(!flag)

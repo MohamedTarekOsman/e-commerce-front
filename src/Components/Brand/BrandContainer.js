@@ -10,7 +10,7 @@ export default function BrandContainer({brand,loading}) {
         {
         loading===false?(
           brand.data?(
-            brand.data.map((item,index)=><BrandCard  img={item.image} key={index}/>)
+            brand.data.map((item,index)=><BrandCard id={item._id}  img={item.image} key={index}/>)
           ):<h4>لا توجد براندات</h4>
         ):<Spinner animation='border' variant='primary' className='m-auto'/>
       }

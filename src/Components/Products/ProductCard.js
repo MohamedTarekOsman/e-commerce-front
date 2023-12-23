@@ -9,7 +9,6 @@ import { ToastContainer } from 'react-toastify'
 export default function ProductCard({item,favProd}) {
 
     const [removeToWishListData, addToWishListData, handelFav, favImg] = ProductCardHook(item, favProd)
-    
     return (
     <Col xs="6" sm="6" md="4" lg="3" className="d-flex" >
             <Card
@@ -57,7 +56,11 @@ export default function ProductCard({item,favProd}) {
                                 <div className="card-rate mx-2">{item.ratingsAverage || 0}</div>
                             </div>
                             <div className="d-flex">
-                                <div className="card-price">{item.price}</div>
+                                <div className="card-price">
+                                    {item.priceAfterDiscount >= 1 ?
+                                        (<div><span style={{ textDecorationLine: 'line-through' }}>{item.price}</span> {item.priceAfterDiscount}</div>)
+                                        : item.price}
+                                </div>
                                 <div className="card-currency mx-1">جنيه</div>
                             </div>
                         </div>

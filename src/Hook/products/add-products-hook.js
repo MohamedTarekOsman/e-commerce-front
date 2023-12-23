@@ -8,6 +8,7 @@ import notify from '../useNotifaction';
 
 const AdminAddProductsHook = () => {
 
+
     const dispatch = useDispatch();
     useEffect(() => {
         const run=async() =>{
@@ -90,7 +91,7 @@ const AdminAddProductsHook = () => {
     }
 
 
-
+    
     //when selet category store id
     const onSeletCategory = async (e) => {
         if (e.target.value !== 0) {
@@ -110,7 +111,7 @@ const AdminAddProductsHook = () => {
             }
         
         
-    }, [CatID, subCat, subCat.data])
+    }, [CatID, subCat])
 
     //when selet brand store id
     const onSeletBrand = (e) => {
@@ -157,6 +158,7 @@ const AdminAddProductsHook = () => {
         formData.append("description", prodDescription);
         formData.append("quantity", qty);
         formData.append("price", priceBefore);
+        formData.append("priceAfterDiscount", priceAftr);
         formData.append("imageCover", imgCover);
         formData.append("category", CatID);
         formData.append("brand", BrandID);

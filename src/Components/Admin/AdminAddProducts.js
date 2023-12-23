@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import AdminAddProductsHook from '../../Hook/products/add-products-hook';
 
 export default function AdminAddProducts() {
+
     const  [onChangeDesName, onChangeQty, onChangeColor, onChangePriceAfter, onChangePriceBefor, onChangeProdName, showColor, category, brand, priceAftr, images, setImages, onSelect, onRemove, options, handelChangeComplete, removeColor, onSeletCategory, handelSubmit, onSeletBrand, colors, priceBefore, qty, prodDescription, prodName]=AdminAddProductsHook()
   return (
     <>
@@ -23,7 +24,7 @@ export default function AdminAddProducts() {
                         max={5}
                         allowCrop={false}
                     />
-                    <input
+                    <input 
                         value={prodName}
                         onChange={onChangeProdName}
                         type="text"

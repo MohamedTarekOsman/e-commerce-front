@@ -60,6 +60,9 @@ export default function AddBrandHook() {
                 setLoading(true)
                 setIsPress(false)
                 notify("تمت عملية الاضافه بنجاح","success")
+                setTimeout(()=>{
+                    window.location.reload(false)
+                },1500)
                 return
             }else{
                 notify("هناك مشكله في عملية الاضافه","error")

@@ -14,7 +14,7 @@ export default function BrandFeatured({title,btntitle}) {
         <Row className="my-1 d-flex justify-content-start">
         {
             loading===false?(
-                brand.data.slice(0,5).map((item,index)=>(<BrandCard img={item.image} key={index}/>))
+                brand.data.slice(0,6).map((item,index)=>(<BrandCard id={item._id} img={item.image} key={index}/>))
             ):<Spinner animation='border' variant='primary' className='m-auto'/>
           }
         

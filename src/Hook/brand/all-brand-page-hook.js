@@ -5,7 +5,7 @@ import { getAllBrand } from '../../Redux/actions/brandAction';
 export const AllBrandHook = () => {
 
   const dispatch =useDispatch();
-  const limit=2
+  const limit=3
   //when first load
   useEffect(()=>{
     dispatch(getAllBrand(limit));

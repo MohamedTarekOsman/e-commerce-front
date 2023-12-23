@@ -54,7 +54,7 @@ export default function App() {
               <Route path='/user/verify-code' element={<VerifyPasswordPage/>}/>
               <Route path='/user/reset-password' element={<ResetPasswordPage/>}/>
               <Route path="/products/category/:id" element={<ProductsByCategory />} />
-            <Route path="/products/brand/:id" element={<ProductsByBrand />} />
+              <Route path="/products/brand/:id" element={<ProductsByBrand />} />
 
           <Route element={<ProtectedRoute auth={isAdmin}/>}>
               <Route path='/admin/allproducts' element={<AdminAllProductsPage/>}/>
