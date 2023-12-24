@@ -191,7 +191,9 @@ const AdminAddProductsHook = () => {
                     setSeletedSubID([])
                     setTimeout(() => setLoading(true), 1500)
                 if (product) {
-                    notify("تم الاضافة بنجاح", "success")
+                    setTimeout(() => {
+                        notify("تم الاضافة بنجاح", "success")
+                    }, 1500)
                 }else {
                     notify("هناك مشكله", "error")
                 }

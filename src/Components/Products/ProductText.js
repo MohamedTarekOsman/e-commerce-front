@@ -58,11 +58,7 @@ export default function ProductText() {
         </Row>
         <Row className="mt-4">
           <Col md="12">
-             {items.priceAfterDiscount >= 1 ? (
-            <div className="product-price d-inline px-3 py-3 border">
-              <span style={{ textDecorationLine: 'line-through' }}> {items.price}</span> {items.priceAfterDiscount} جنية
-            </div>) : <div className="product-price d-inline px-3 py-3 border"><span> {items.price}</span> جنية </div>
-          }
+              {items.price}
             <div onClick={addToCartHandel} className="product-cart-add px-3 py-3 d-inline mx-3">اضف للعربة</div>
           </Col>
         </Row>

@@ -63,11 +63,7 @@ export default function AdminAllProductsCard({item}) {
                                 <div className="d-flex">
                                     <div className="card-currency mx-1">جنيه</div>
                                     <div className="card-price">
-                                    {item.priceAfterDiscount >= 1 ? 
-                                        (<div >
-                                            <span style={{ textDecorationLine: 'line-through' }}> {item.price}</span> {item.priceAfterDiscount} جنية
-                                        </div>) : <div ><span> {item.price}</span> جنية </div>
-          }
+                                        {item.price}
                                     </div>
                                 </div>
                             </div>
