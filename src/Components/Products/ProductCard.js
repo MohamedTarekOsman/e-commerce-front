@@ -57,7 +57,12 @@ export default function ProductCard({item,favProd}) {
                             </div>
                             <div className="d-flex">
                                 <div className="card-price">
-                                        {item.price}
+                                    {
+                                        item.priceAfterDiscount>1?(
+                                            <div><span style={{textDecorationLine:"line-through",color:"red"}}> {item.price} </span> {item.priceAfterDiscount} </div>
+                                        ):item.price
+                                    }
+                                        
                                 </div>
                                 <div className="card-currency mx-1">جنيه</div>
                             </div>

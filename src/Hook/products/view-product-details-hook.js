@@ -31,11 +31,19 @@ const ViewProductDetailsHook = (id) => {
     useEffect(()=>{
         if(items.category){
             setCategory(items.category.name);
-            setBrand(items.brand.name)
-            setColors(items.colors)
-            setDescription(items.description)
-            setPrice(items.price)
             setCategoryId(items.category._id)
+        }
+        if(items.brand){
+            setBrand(items.brand.name)
+        }
+        if(items.colors){
+            setColors(items.colors)
+        }
+        if(items.description){
+            setDescription(items.description)
+        }
+        if(items.price){
+            setPrice(items.price)
         }
     },[items])
 

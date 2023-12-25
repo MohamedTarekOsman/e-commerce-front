@@ -58,7 +58,11 @@ export default function ProductText() {
         </Row>
         <Row className="mt-4">
           <Col md="12">
-              {items.price}
+          {
+              items.priceAfterDiscount>1?(
+                  <div style={{marginBottom:"20px"}}><span style={{textDecorationLine:"line-through",color:"red"}}> {items.price} </span> {items.priceAfterDiscount} جنيه</div>
+              ):<div style={{marginBottom:"20px"}}>{items.price} جنيه</div>
+          }
             <div onClick={addToCartHandel} className="product-cart-add px-3 py-3 d-inline mx-3">اضف للعربة</div>
           </Col>
         </Row>

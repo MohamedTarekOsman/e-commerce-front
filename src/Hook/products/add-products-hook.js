@@ -180,22 +180,28 @@ const AdminAddProductsHook = () => {
     useEffect(() => {
         try{
             if (loading === false) {
-                setColors([])
-                    setImages([])
-                    setProdName('')
-                    setProdDescription('')
-                    setPriceBefore('السعر قبل الخصم')
-                    setPriceAftr('السعر بعد الخصم')
-                    setQty('الكمية المتاحة')
-                    SetBrandID(0)
-                    setSeletedSubID([])
-                    setTimeout(() => setLoading(true), 1500)
-                if (product) {
                     setTimeout(() => {
+                        setColors([])
+                        setImages([])
+                        setProdName('')
+                        setProdDescription('')
+                        setPriceBefore('السعر قبل الخصم')
+                        setPriceAftr('السعر بعد الخصم')
+                        setQty('الكمية المتاحة')
+                        SetBrandID(0)
+                        setSeletedSubID([])
+                        setLoading(true)
+                    }, 2000)
+                if (product) {
+                    setTimeout(()=>{
                         notify("تم الاضافة بنجاح", "success")
-                    }, 1500)
+                    }, 2000)
+                        
                 }else {
-                    notify("هناك مشكله", "error")
+                    setTimeout(()=>{
+                        notify("هناك مشكله", "error")
+                    }, 2000)
+                    
                 }
             }
         }catch(e){}

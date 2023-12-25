@@ -8,9 +8,7 @@ import HomeCategoryHook from '../../Hook/category/home-category-hook'
 
 
 const HomeCategory=()=>{
-
   const [category,loading,colors]=HomeCategoryHook()
-  console.log(category)
   return (
     <Container>
         <SubTitle title={"التصنيفات"} btntitle={"المزيد"} pathText={"/allcategory"}/>

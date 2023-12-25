@@ -25,7 +25,6 @@ const DeleteCartHook = (item) => {
     const res = useSelector(state => state.cartReducer.clearCart)
     useEffect(() => {
         if (loading === false) {
-            console.log(res)
             if (res && res.status === "success") {
                 notify("تم الحذف بنجاح", "success")
                 setTimeout(() => {

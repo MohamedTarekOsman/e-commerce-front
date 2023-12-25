@@ -199,9 +199,9 @@ const AdminEditProductsHook = (id) => {
         formData.append("description", prodDescription);
         formData.append("quantity", qty);
         formData.append("price", priceBefore);
-
         formData.append("category", CatID);
         formData.append("brand", BrandID);
+        formData.append("priceAfterDiscount", priceAftr);
 
         setTimeout(() => {
             formData.append("imageCover", imgCover);
@@ -236,7 +236,6 @@ const AdminEditProductsHook = (id) => {
             SetBrandID(0)
             setSeletedSubID([])
             setTimeout(() => setLoading(true), 1500)
-
             if (product) {
                 notify("تم التعديل بنجاح", "success")
             }
