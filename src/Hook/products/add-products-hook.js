@@ -144,6 +144,7 @@ const AdminAddProductsHook = () => {
             return;
         }
         try{
+            setLoading(true);
             //convert base 64 image to file 
         const imgCover = dataURLtoFile(images[0], Math.random() + ".png")
         //convert array of base 64 image to file 
@@ -167,7 +168,7 @@ const AdminAddProductsHook = () => {
         seletedSubID.map((item) => formData.append("subCategory", item._id))
 
 
-        setLoading(true)
+        
             dispatch(createProduct(formData))
         setLoading(false)
         }catch(e) {}
