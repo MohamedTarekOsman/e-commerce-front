@@ -169,7 +169,7 @@ const AdminAddProductsHook = () => {
 
 
         
-            dispatch(createProduct(formData))
+        await dispatch(createProduct(formData))
         setLoading(false)
         }catch(e) {}
        
