@@ -201,7 +201,6 @@ const AdminEditProductsHook = (id) => {
         formData.append("price", priceBefore);
         formData.append("category", CatID);
         formData.append("brand", BrandID);
-        formData.append("priceAfterDiscount", priceAftr);
 
         setTimeout(() => {
             formData.append("imageCover", imgCover);
