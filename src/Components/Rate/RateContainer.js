@@ -21,7 +21,6 @@ export default function RateContainer({rateQty,rateAvg}) {
         </Col>
       </Row>
       <RatePost/>
-
       {allReview.data ? (allReview.data.map((review, index) => {
                 return (<RateItem key={index} review={review} />)
             })) : <h6>لا يوجد تقيمات الان</h6>}

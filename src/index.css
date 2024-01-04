@@ -661,7 +661,7 @@ body {
   /* end filter */
   #upload-photo {
       opacity: 0;
-      position: absolute;
+      width: 50px;
       z-index: -1;
   }
 
