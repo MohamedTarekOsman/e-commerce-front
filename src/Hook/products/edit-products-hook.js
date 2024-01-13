@@ -58,14 +58,14 @@ const AdminEditProductsHook = (id) => {
     useEffect(() => {
         if(item){
         if (item.data) {
-            setImages(item.data.images)
-            setProdName(item.data.title)
-            setProdDescription(item.data.description)
-            setPriceBefore(item.data.price)
-            setQty(item.data.quantity)
-            setCatID(item.data.category._id)
-            SetBrandID(item.data.brand._id)
-            setColors(item.data.colors)
+            setImages(item?.data?.images)
+            setProdName(item?.data?.title)
+            setProdDescription(item?.data?.description)
+            setPriceBefore(item?.data?.price)
+            setQty(item?.data?.quantity)
+            setCatID(item?.data?.category?._id)
+            SetBrandID(item?.data?.brand?._id)
+            setColors(item?.data?.colors)
         }}
     }, [item])
 
